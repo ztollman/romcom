@@ -22,6 +22,36 @@ var title = document.querySelector("#title");
 var savedCoversGrid = document.querySelector(".saved-covers-section");
 
 
+window.addEventListener("load", generateRandomCover);
+showRandomButton.addEventListener("click", generateRandomCover)
+
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
+}
+
+function createCover(coverImg, title, desc1, desc2){
+  return new Cover(coverImg, title, desc1, desc2);
+}
+
+
+function random() {
+  var cover = covers[getRandomIndex(covers)];
+  var title = titles[getRandomIndex(titles)];
+  var tagline1 = descriptors[getRandomIndex(descriptors)];
+  var tagline2 = descriptors[getRandomIndex(descriptors)];
+  return [cover, title, tagline1, tagline2];
+}
+
+function setHomeCover(cover) {
+    coverImage.src = cover.cover;
+    coverTitle.innerText = cover.title;
+    tagLine1.innerText = cover.tagline1;
+    tagLine2.innerText = cover.tagline2;
+    currentCover = cover;
+}
+
+function generateRandomCover() {
+  var randomInfo = random();
+  var randomCover = createCover(randomInfo[0], randomInfo[1], randomInfo[2], randomInfo[3]);
+  setHomeCover(randomCover);
 }
