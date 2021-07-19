@@ -3,11 +3,4 @@
 A boilerplate repo. 
 
 ## Set Up
-1. ONE teammate: fork this boilerplate repository 
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. View the project in the browser by running open index.html in your terminal
-6. Add all project partners and your assigned instructor as collaborators on the repository
-
-The project spec & rubric can be found [here](https://frontend.turing.io/projects/module-1/romcom-pair.html)
+I had no time to setup a proper read me. I was going to do a singular commit to this project intially but I decided to go back and block out each of the functions into branchs like intended. It took a long time lol. But I got to redigest code because of it!
