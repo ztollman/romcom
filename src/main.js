@@ -27,7 +27,7 @@ makeNewCoverButton.addEventListener("click", pgLoadCreateCover);
 homeButton.addEventListener("click", pgLoadHome);
 saveMyCoverButton.addEventListener("click", saveCurrentCover);
 viewSavedButton.addEventListener("click", pgLoadSavedCovers)
-
+makeMyCoverButton.addEventListener("click", makeCustomCover);
 
 
 
@@ -103,6 +103,21 @@ function pgLoadHome() {
   showRandomButton.classList.remove('hidden');
   saveMyCoverButton.classList.remove('hidden');
   formView.classList.add('hidden')
+}
+
+function saveInputData() {
+  covers.push(cover.value);
+  titles.push(title.value);
+  descriptors.push(descriptor1.value);
+  descriptors.push(descriptor2.value);
+}
+
+function makeCustomCover(i) {
+  i.preventDefault();
+    currentCover = createCover(cover.value, title.value, descriptor1.value, descriptor2.value);
+  setHomeCover(currentCover);
+  saveInputData();
+  pgLoadHome();
 }
 
 function saveCurrentCover(){
