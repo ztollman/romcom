@@ -28,7 +28,7 @@ homeButton.addEventListener("click", pgLoadHome);
 saveMyCoverButton.addEventListener("click", saveCurrentCover);
 viewSavedButton.addEventListener("click", pgLoadSavedCovers)
 makeMyCoverButton.addEventListener("click", makeCustomCover);
-
+savedCoversGrid.addEventListener("dblclick", deleteSavedCover)
 
 
 
@@ -124,4 +124,13 @@ function saveCurrentCover(){
   if (!savedCovers.includes(currentCover)) {
     savedCovers.push(currentCover);
   }
+}
+
+function deleteSavedCover(event) {
+  for(var i = 0; i < savedCovers.length; i++) {
+    if (savedCovers[i].id == event.target.parentNode.id) {
+      savedCovers.splice(i, 1);
+    }
+  }
+  displaySavedCovers();
 }
