@@ -1,4 +1,3 @@
-
 var savedCovers = [];
 var currentCover;
 
@@ -24,6 +23,14 @@ var savedCoversGrid = document.querySelector(".saved-covers-section");
 
 window.addEventListener("load", generateRandomCover);
 showRandomButton.addEventListener("click", generateRandomCover)
+makeNewCoverButton.addEventListener("click", pgLoadCreateCover);
+homeButton.addEventListener("click", pgLoadHome);
+saveMyCoverButton.addEventListener("click", saveCurrentCover);
+viewSavedButton.addEventListener("click", pgLoadSavedCovers)
+
+
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -54,4 +61,52 @@ function generateRandomCover() {
   var randomInfo = random();
   var randomCover = createCover(randomInfo[0], randomInfo[1], randomInfo[2], randomInfo[3]);
   setHomeCover(randomCover);
+}
+
+function displaySavedCovers() {
+    savedCoversGrid.innerHTML = "";
+    for (var i = 0; i < savedCovers.length; i++) {
+        savedCoversGrid.innerHTML += `
+          <section class="mini-cover" id="${savedCovers[i].id}">
+            <img class="cover-image" src="${savedCovers[i].cover}">
+            <h2 class="cover-title">${savedCovers[i].title}</h2>
+            <h3 class="tagline">A tale of <span class="tagline-1">${savedCovers[i].tagline1}</span> and <span class="tagline-2">${savedCovers[i].tagline2}</span></h3>
+            <img class="price-tag" src="./assets/price.png">
+            <img class="overlay" src="./assets/overlay.png">
+          </section>`;
+      }
+    }
+
+function pgLoadCreateCover() {
+    homeView.classList.add('hidden');
+    showRandomButton.classList.add('hidden');
+    saveMyCoverButton.classList.add('hidden');
+    savedCoverView.classList.add("hidden")
+    formView.classList.remove('hidden');
+    homeButton.classList.remove('hidden');
+}
+
+function pgLoadSavedCovers() {
+  homeView.classList.add('hidden');
+  showRandomButton.classList.add('hidden');
+  saveMyCoverButton.classList.add('hidden');
+  formView.classList.add('hidden')
+  homeButton.classList.remove('hidden')
+  savedCoverView.classList.remove('hidden');
+  displaySavedCovers();
+}
+
+function pgLoadHome() {
+  homeButton.classList.add('hidden');
+  homeView.classList.remove('hidden');
+  savedCoverView.classList.add('hidden');
+  showRandomButton.classList.remove('hidden');
+  saveMyCoverButton.classList.remove('hidden');
+  formView.classList.add('hidden')
+}
+
+function saveCurrentCover(){
+  if (!savedCovers.includes(currentCover)) {
+    savedCovers.push(currentCover);
+  }
 }
